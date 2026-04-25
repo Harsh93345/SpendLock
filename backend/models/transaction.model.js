@@ -29,4 +29,4 @@ const transactionSchema=new mongoose.Schema({
     upiId: String
 },{timestamps:true});
 
-export const Transaction=mongoose.model("transaction",transactionSchema)
+export const Transaction=mongoose.model("Transaction",transactionSchema)

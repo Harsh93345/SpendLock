@@ -11,7 +11,7 @@ const userSchema=new Schema({
         unique:true
     },
     upiPin:{
-        tyoe:String,
+        type:String,
         required:true
     }
 },{timestamps:true});
