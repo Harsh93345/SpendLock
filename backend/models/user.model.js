@@ -17,7 +17,7 @@ const userSchema=new Schema({
         unique:true
     },
     upiPin:{
-        type:String,
+        type:Number,
         required:true
     },
     avatar:{
