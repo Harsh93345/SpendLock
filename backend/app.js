@@ -17,4 +17,10 @@ import userRouter from "./routes/user.route.js"
 //router declaration
 app.use("/api/v1/users", userRouter)
 
+import walletRouter from "./routes/wallets.route.js"
+app.use("/api/v1/wallets", walletRouter)
+
+import bankRouter from "./routes/bank.route.js"
+app.use("/api/v1/banks", bankRouter)
+
 export { app }
