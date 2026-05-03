@@ -1,22 +1,19 @@
 import {Router} from "express"
 import { registerUser,loginUser,logoutUser,refreshAcessToken,changeCurrentPassword,changeUpiPin,UpdateAccountDetails,updateUserAvatar,getCurrentUser } from "../controllers/user.controller.js"
 import { verifyJWT } from "../middlewares/auth.middleware.js"
-import { upload } from "../utils/multer.js"
+import { upload } from "../middlewares/multer.middleware.js"
+
 const userRouter = Router()
 
 userRouter.route("/register").post(
-    upload.fields([
-        {
-            name: "avatar",
-            maxCount: 1
-        }, 
-        {
-            name: "coverImage",
-            maxCount: 1
-        }
-    ]),
-    registerUser
-    )
+  upload.fields([
+    {
+      name: "avatar",
+      maxCount: 1
+    }
+  ]),
+  registerUser
+)
 
 userRouter.route("/login").post(loginUser)
 

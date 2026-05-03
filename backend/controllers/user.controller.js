@@ -25,7 +25,6 @@ const generateAccessAndRefereshTokens = async(userId) =>{
 
 const registerUser = asyncHandler( async (req, res)=>{
     
-
     const {name, email, password, username, upiPin}=req.body
 
     if(
@@ -56,13 +55,13 @@ const registerUser = asyncHandler( async (req, res)=>{
         throw new ApiError(400, "Avatar file is required")
     }
     const user = await User.create({
-        fullName,
-        avatar: avatar.url,
-        coverImage: coverImage?.url || "",
-        email, 
-        password,
-        username: username.toLowerCase()
-    })
+    name,
+    username: username.toLowerCase(),
+    avatar: avatar.url,
+    email, 
+    password,
+    upiPin
+});
 
     const createdUser = await User.findById(user._id).select(
         "-password -refreshToken"
@@ -86,7 +85,7 @@ const loginUser = asyncHandler(async (req, res)=>{
         throw new ApiError(400, "Username or Email is required")
     }
 
-    const user = await user.findOne({
+    const user = await User.findOne({
         $or: [{email}, {username}] 
     })
 
@@ -297,7 +296,8 @@ export {
     changeCurrentPassword,
     changeUpiPin,
     UpdateAccountDetails,
-    updateUserAvatar
+    updateUserAvatar,
+    getCurrentUser
 }
    
 
